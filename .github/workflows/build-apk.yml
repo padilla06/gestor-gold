@@ -32,6 +32,9 @@ jobs:
           npx cap add android
           npx cap sync android
 
+      - name: Generar iconos personalizados de Android
+        run: npx --yes @capacitor/assets generate --android
+
       - name: Agregar permisos de Notificaciones en AndroidManifest
         run: |
           sed -i 's/<uses-permission android:name="android.permission.INTERNET" \/>/<uses-permission android:name="android.permission.INTERNET" \/>\n    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" \/>\n    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" \/>/' android/app/src/main/AndroidManifest.xml
